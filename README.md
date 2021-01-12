@@ -175,3 +175,10 @@ composer require symfony/http-foundation
  # Bug fixe
 
  ![bug_fix_1](ressources/bug_fix_1.PNG)
+
+ Il suffit de configurer son httpd.conf Apache dans l'interface Wamp par exemple et y mettre les donnees de connexion :
+ Exemple:
+ ```conf 
+ Listen 127.0.0.1:8000
+ ServerName localhost:8000
+ ```
