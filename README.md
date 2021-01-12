@@ -77,9 +77,6 @@ Demarrage de l'application symfony
 cd  [projet]
 symfony server:start
 ```
-
-  <img src="ressources/symfony_accueil.png">
-
 ![symfony_accueil](ressources/symfony_accueil.png)
 
 ```cmd
