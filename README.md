@@ -1,5 +1,21 @@
+<!-- TOC -->
+
 - [PHP SYMFONY](#php-symfony)
-  - [Prerequis](#prerequis)
+    - [Prerequis](#prerequis)
+        - [Installer Composer](#installer-composer)
+        - [Installer Symfony](#installer-symfony)
+        - [Installation projet symfony website avec composer](#installation-projet-symfony-website-avec-composer)
+        - [Installation projet symfony website avec symfony](#installation-projet-symfony-website-avec-symfony)
+        - [Installation Web serveur apache](#installation-web-serveur-apache)
+        - [Demarrage de l'application](#demarrage-de-lapplication)
+        - [Installer Doctrine](#installer-doctrine)
+        - [Verifier votre environnement](#verifier-votre-environnement)
+        - [Creation d'une base de donnee mysql par doctrine](#creation-dune-base-de-donnee-mysql-par-doctrine)
+        - [Version php installe](#version-php-installe)
+        - [Controle de l'installation de symfony](#controle-de-linstallation-de-symfony)
+        - [Installation de package recommande exemple intl](#installation-de-package-recommande-exemple-intl)
+    - [Structure du framework](#structure-du-framework)
+    - [Realisez votre premiere page](#realisez-votre-premiere-page)
 
 <!-- /TOC -->
 
@@ -7,7 +23,9 @@
 
 ## Prerequis
 
-Installer [Composer](https://getcomposer.org/download/)
+### Installer Composer
+
+[Composer](https://getcomposer.org/download/)
 
 ```cmd
 D:\PROGRAMMING\PHP_SYMFONY>composer --version
@@ -16,7 +34,8 @@ D:\PROGRAMMING\PHP_SYMFONY>composer --version
 Composer version 2.0.8 2020-12-03 17:20:38
 ```
 
-Installer [Symfony](https://symfony.com/download)
+### Installer Symfony
+[Symfony](https://symfony.com/download)
 
 ```cmd
 D:\PROGRAMMING\PHP_SYMFONY>symfony -v
@@ -25,7 +44,7 @@ D:\PROGRAMMING\PHP_SYMFONY>symfony -v
 Symfony CLI version v4.21.6
 ```
 
-Installation projet symfony website
+### Installation projet symfony website avec composer
 
 ```cmd
 composer create-project symfony/website-skeleton mon-super-projet
@@ -33,20 +52,7 @@ composer create-project symfony/website-skeleton mon-super-projet
 
 ![installation de symfony](ressources/create_projet.PNG)
 
-Demarrage de l'application
-
-```cmd
-cd  [projet]
-php bin/console server:run
-```
-
-## Command line symfony et composer
-
-Version php installe
-```cmd
-symfony local:php:list
-```
-![php_version](ressources/php_version.png)
+### Installation projet symfony website avec symfony
 
 Creer un nouveau projet symfony
 
@@ -54,45 +60,25 @@ Creer un nouveau projet symfony
 symfony new [projet]
 ```
 
-Controle de l'installation symfony
-
-```
-symfony check:req
-// retourne
-
-Symfony Requirements Checker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-> PHP is using the following php.ini file:
-C:\MAMP\bin\php\php7.4.1\php.ini
-
-> Checking Symfony requirements:
-
-.......................WWW........W
-
-
- [OK]
- Your system is ready to run Symfony projects
-```
-
-Installation de package recommande exemple intl
+### Installation Web serveur apache 
+[Symfony apache](https://symfony.com/doc/current/setup/web_server_configuration.html#web-server-apache-mod-php)
 
 ```cmd
-composer require symfony/intl
+ composer require symfony/apache-pack
 ```
 
-```ini
-// Pensez a decommenter la ligne correspondante dans le fichier php.ini
-extension=intl
+Puis suivre les instructions pour configurer le server apache (fichier.htaccess)
+
+### Demarrage de l'application
+
+Demarrage de l'application symfony
+
+```cmd
+cd  [projet]
+symfony server:start
 ```
 
-Ajouter l'extension opcache
-
-```ini
-zend_extension="[your path to php7]\php7\ext\php_opcache.dll"
-```
-
-Demarrage serveur
+![symfony_accueil](ressources/symfony_accueil.png)
 
 ```cmd
 symfony.exe server:ca:install
@@ -101,15 +87,14 @@ symfony serve -d
     The Web server is using PHP CGI 7.4.1
     http://127.0.0.1:8000
 ```
-
-Installer Doctrine
+### Installer Doctrine
 
 ```cmd
 composer require symfony/orm-pack
 composer require --dev symfony/maker-bundle
 ```
 
-Configurer votre environnement pour Doctrine connecte a MAMP
+Configurer votre environnement pour que Doctrine se connecte a WAMP/MAMP/XAMP...
 
 Dans .env
 
@@ -126,7 +111,7 @@ doctrine:
     driver: pdo_mysql
 ```
 
-Verifier votre environnement
+### Verifier votre environnement
 
 ```cmd
 php bin/console about
@@ -134,7 +119,7 @@ php bin/console about
 
 ![about_symfony](ressources/about_symfony.png)
 
-Creation d'une base de donnee mysql
+### Creation d'une base de donnee mysql par doctrine
 
 ```
 php bin/console doctrine:database:create
@@ -143,6 +128,40 @@ Configure precedemment ici DATABASE_URL="mysql://root:root@localhost:3306/symfon
 
 ```
 
+### Version php installe
+```cmd
+symfony local:php:list
+```
+![php_version](ressources/php_version.png)
+
+### Controle de l'installation de symfony
+
+```
+symfony check:req
+// retourne
+Symfony Requirements Checker
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> PHP is using the following php.ini file:
+C:\MAMP\bin\php\php7.4.1\php.ini
+> Checking Symfony requirements:
+.......................WWW........W
+ [OK]
+ Your system is ready to run Symfony projects
+```
+
+### Installation de package recommande exemple intl
+```cmd
+composer require symfony/intl
+```
+```ini
+// Pensez a decommenter la ligne correspondante dans le fichier php.ini
+extension=intl
+```
+Ajouter l'extension opcache
+
+```ini
+zend_extension="[your path to php7]\php7\ext\php_opcache.dll"
+```
 Installation package http-foundation
 
 ```
@@ -152,3 +171,8 @@ composer require symfony/http-foundation
 ## Structure du framework
 
 ## Realisez votre premiere page
+
+
+ # Bug fixe
+
+ ![bug_fix_1](ressources/bug_fix_1.PNG)
