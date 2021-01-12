@@ -1,15 +1,15 @@
-<VirtualHost *:8001>
+<VirtualHost *:80>
     ServerName domain.tld
     ServerAlias www.domain.tld
-
     DocumentRoot /var/www/project/public
     DirectoryIndex /index.php
 
     <Directory /var/www/project/public>
+        Require all granted
         AllowOverride None
         Order Allow,Deny
         Allow from All
-        Require all granted
+
         FallbackResource /index.php
     </Directory>
 
@@ -34,5 +34,4 @@
     #SetEnv APP_SECRET <app-secret-id>
     #SetEnv DATABASE_URL "mysql://db_user:db_pass@host:3306/db_name"
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
 </VirtualHost>

@@ -91,7 +91,7 @@ symfony serve -d
 ```
 ### Arret de l'application
 
-Ctrl+D
+Ctrl+C
 
 ### Installer Doctrine
 
