@@ -25,13 +25,24 @@ D:\PROGRAMMING\PHP_SYMFONY>symfony -v
 Symfony CLI version v4.21.6
 ```
 
-Creer un nouveau projet
+Installation projet symfony website
+
+```cmd
+composer create-project symfony/website-skeleton mon-super-projet
+```
+
+![installation de symfony](ressources/create_projet.PNG)
+
+
+## Command line symfony et composer
+
+Creer un nouveau projet symfony
 
 ```cmd
 symfony new [projet]
 ```
 
-Controle de l'installation
+Controle de l'installation symfony
 
 ```
 symfony check:req
@@ -52,7 +63,7 @@ C:\MAMP\bin\php\php7.4.1\php.ini
  Your system is ready to run Symfony projects
 ```
 
-Installation de package recommande
+Installation de package recommande exemple intl
 
 ```cmd
 composer require symfony/intl
@@ -111,9 +122,9 @@ Verifier votre environnement
 php bin/console about
 ```
 
-
 Creation d'une base de donnee mysql
-``` 
+
+```
 php bin/console doctrine:database:create
 // cela vas creer la base de donnee mentionne ci-dessus, cad, symfony
 Configure precedemment ici DATABASE_URL="mysql://root:root@localhost:3306/symfony?serverVersion=5.7.24" dans .env
@@ -121,22 +132,11 @@ Configure precedemment ici DATABASE_URL="mysql://root:root@localhost:3306/symfon
 ```
 
 Installation package http-foundation
-``` 
+
+```
 composer require symfony/http-foundation
 ```
 
-Installation projet symfony website
-```cmd
-composer create-project symfony/website-skeleton mon-super-projet
-```
-
-
-
-
 ##Structure du framework
 
-
-
-
 ## Realisez votre premiere page
-
