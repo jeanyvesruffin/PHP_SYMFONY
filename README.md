@@ -8,12 +8,15 @@
         - [Installation projet symfony website avec symfony](#installation-projet-symfony-website-avec-symfony)
         - [Installation Web serveur apache](#installation-web-serveur-apache)
         - [Demarrage de l'application](#demarrage-de-lapplication)
+        - [Arret de l'application](#arret-de-lapplication)
         - [Installer Doctrine](#installer-doctrine)
         - [Verifier votre environnement](#verifier-votre-environnement)
         - [Creation d'une base de donnee mysql par doctrine](#creation-dune-base-de-donnee-mysql-par-doctrine)
         - [Version php installe](#version-php-installe)
         - [Controle de l'installation de symfony](#controle-de-linstallation-de-symfony)
         - [Installation de package recommande exemple intl](#installation-de-package-recommande-exemple-intl)
+    - [Php.ini](#phpini)
+    - [Debug mode](#debug-mode)
     - [Structure du framework](#structure-du-framework)
     - [Realisez votre premiere page](#realisez-votre-premiere-page)
 
@@ -64,7 +67,7 @@ symfony new [projet]
 [Symfony apache](https://symfony.com/doc/current/setup/web_server_configuration.html#web-server-apache-mod-php)
 
 ```cmd
- composer require symfony/apache-pack
+composer require symfony/apache-pack
 ```
 
 Puis suivre les instructions pour configurer le server apache (fichier.htaccess)
@@ -86,6 +89,10 @@ symfony serve -d
     The Web server is using PHP CGI 7.4.1
     http://127.0.0.1:8000
 ```
+### Arret de l'application
+
+Ctrl+D
+
 ### Installer Doctrine
 
 ```cmd
@@ -166,6 +173,26 @@ Installation package http-foundation
 ```
 composer require symfony/http-foundation
 ```
+## Php.ini
+Ajouter / Controler ces lignes dans le fichier php.ini
+
+Suivre dans le xdebug le [wizard](https://xdebug.org/wizard)
+
+```ini 
+zend_extension = c:\wamp64\bin\php\php7.4.9\ext\php_xdebug-3.0.2-7.4-vc15-x86_64.dll
+xdebug.mode = debug
+xdebug.start_with_request = yes
+xdebug.client_port = 9000
+```
+
+## Debug mode
+
+Dans .env
+```.env
+// set it to 1 to enable the debug mode
+APP_DEBUG=0
+```
+
 
 ## Structure du framework
 
@@ -177,8 +204,7 @@ composer require symfony/http-foundation
  ![bug_fix_1](ressources/bug_fix_1.PNG)
 
  Il suffit de configurer son httpd.conf Apache dans l'interface Wamp par exemple et y mettre les donnees de connexion :
- Exemple:
- ```conf 
- Listen 127.0.0.1:8000
- ServerName localhost:8000
- ```
+[web_server_configuration](https://symfony.com/doc/current/setup/web_server_configuration.html)
+
+
+**TRES GROS RISQUE D'ECRIRE DANS LE MAUVAIS FICHIER PHP.INI A TRAVERS L'INTERFACE WAMPSERVER VIGILANT!!!!**
