@@ -33,8 +33,20 @@ composer create-project symfony/website-skeleton mon-super-projet
 
 ![installation de symfony](ressources/create_projet.PNG)
 
+Demarrage de l'application
+
+```cmd
+cd  [projet]
+php bin/console server:run
+```
 
 ## Command line symfony et composer
+
+Version php installe
+```cmd
+symfony local:php:list
+```
+![php_version](ressources/php_version.png)
 
 Creer un nouveau projet symfony
 
@@ -90,8 +102,6 @@ symfony serve -d
     http://127.0.0.1:8000
 ```
 
-![Accueil_symfony](ressources\Capture.PNG)
-
 Installer Doctrine
 
 ```cmd
@@ -122,6 +132,8 @@ Verifier votre environnement
 php bin/console about
 ```
 
+![about_symfony](ressources/about_symfony.png)
+
 Creation d'une base de donnee mysql
 
 ```
@@ -137,6 +149,6 @@ Installation package http-foundation
 composer require symfony/http-foundation
 ```
 
-##Structure du framework
+## Structure du framework
 
 ## Realisez votre premiere page
