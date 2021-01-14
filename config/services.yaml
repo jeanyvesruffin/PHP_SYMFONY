@@ -14,12 +14,12 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-        # bind:
-        #     string $adminEmail: 'ruffinmax@hotmail.fr'
-        #     string $foo: 'foo'
-        #     string $bar: 'bar'
-        #     string $baz: 'baz'
-        #     string $other: 'other'
+        bind:
+            string $adminEmail: 'ruffinmax@hotmail.fr'
+            string $foo: 'foo'
+            string $bar: 'bar'
+            string $baz: 'baz'
+            string $other: 'other'
          
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -37,9 +37,12 @@ services:
     # please note that last definitions always *replace* previous ones
     # App\Services\ComplexObject:
     #     autowire: true
-    App\Services\ComplexObject:
-        arguments:
-            string $foo: 'arg_foo'
-            string $bar: 'arg_bar'
-            string $baz: 'arg_baz'
-            string $other: 'arg_other'
+    # App\Service\ComplexObject:
+    #     arguments:
+    #         $foo: 'arg_foo'
+    #         $bar: 'arg_bar'
+    #         $baz: 'arg_baz'
+    #         $other: 'arg_other'
+    # App\Service\MailLogger:
+    #     arguments:
+    #         $adminEmail: 'ruffinmax@hotmail.fr'

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 class ComplexObject
 {
@@ -19,6 +19,6 @@ class ComplexObject
 
     public function doSomething()
     {
-        return print_r('Service injecté');
+        print_r('Service injecté');
     }
 }

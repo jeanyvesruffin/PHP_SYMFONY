@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Services\ComplexObject;
-use App\Services\MailLogger;
+use App\Service\ComplexObject;
+use App\Service\MailLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +21,7 @@ class HelloController extends AbstractController
         $response = new Response();
         $response->setStatusCode(Response::HTTP_OK);
         $complexObjectInjected->doSomething();
-        print_r($response);
+   
         return $response;
     }
 
