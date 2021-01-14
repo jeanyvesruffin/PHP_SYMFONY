@@ -1,3 +1,16 @@
 # index:
 #   path: /
-#   controller: App\Controller\DefaultController::index
+#   controller: App\Controller\HelloController::index
+
+# accueil:
+#   path: /
+#   controller: App\Controller\HelloController::home
+
+# admin:
+#   path: /admin
+#   controller: article:App\Controller\HelloController::admin
+
+# article:
+#   path: /article/{postId}
+#   controller: article:App\Controller\HelloController::showBlogPost
+#   methods: GET
