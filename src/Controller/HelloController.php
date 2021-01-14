@@ -3,24 +3,25 @@
 namespace App\Controller;
 
 use App\Services\ComplexObject;
+use App\Services\MailLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
-
     /**
      * Page d'accueil
      *
      * @Route("/",name="accueil")
      */
+    // public function home(ComplexObject $complexObjectInjected)
     public function home(ComplexObject $complexObjectInjected)
     {
         $response = new Response();
         $response->setStatusCode(Response::HTTP_OK);
-        print_r($response);
         $complexObjectInjected->doSomething();
+        print_r($response);
         return $response;
     }
 
@@ -33,6 +34,7 @@ class HelloController extends AbstractController
     {
         $response = new Response();
         $response->setStatusCode(Response::HTTP_OK);
+   
         print_r($response);
         return $response;
     }
