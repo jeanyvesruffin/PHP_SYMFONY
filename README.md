@@ -2,32 +2,34 @@
 
 - [PHP SYMFONY](#php-symfony)
 - [Prerequis](#prerequis)
-  - [Installer Composer](#installer-composer)
-  - [Installer Symfony](#installer-symfony)
-  - [Installation projet symfony website avec composer](#installation-projet-symfony-website-avec-composer)
-  - [Installation projet symfony website avec symfony](#installation-projet-symfony-website-avec-symfony)
-  - [Installation Web serveur apache](#installation-web-serveur-apache)
-  - [Demarrage de l'application](#demarrage-de-lapplication)
-  - [Arret de l'application](#arret-de-lapplication)
-  - [Installer Doctrine](#installer-doctrine)
-  - [Verifier votre environnement](#verifier-votre-environnement)
-  - [Creation d'une base de donnee mysql par doctrine](#creation-dune-base-de-donnee-mysql-par-doctrine)
-  - [Version php installe](#version-php-installe)
-  - [Controle de l'installation de symfony](#controle-de-linstallation-de-symfony)
-  - [Installation de package recommande exemple intl](#installation-de-package-recommande-exemple-intl)
-  - [Installation package http-foundation](#installation-package-http-foundation)
-  - [Php.ini](#phpini)
-  - [Debug mode](#debug-mode)
-  - [Nettoyage du cache Clear Cache](#nettoyage-du-cache-clear-cache)
+    - [Installer Composer](#installer-composer)
+    - [Installer Symfony](#installer-symfony)
+    - [Installation projet symfony website avec composer](#installation-projet-symfony-website-avec-composer)
+    - [Installation projet symfony website avec symfony](#installation-projet-symfony-website-avec-symfony)
+    - [Installation Web serveur apache](#installation-web-serveur-apache)
+    - [Installer Doctrine](#installer-doctrine)
+    - [Verifier votre environnement](#verifier-votre-environnement)
+    - [Creation d'une base de donnee mysql par doctrine](#creation-dune-base-de-donnee-mysql-par-doctrine)
+    - [Version php installe](#version-php-installe)
+    - [Controle de l'installation de symfony](#controle-de-linstallation-de-symfony)
+    - [Installation OpCache](#installation-opcache)
+    - [Installation de package recommande exemple intl](#installation-de-package-recommande-exemple-intl)
+    - [Installation package http-foundation](#installation-package-http-foundation)
+    - [Php.ini](#phpini)
+    - [Debug mode](#debug-mode)
+    - [Nettoyage du cache Clear Cache](#nettoyage-du-cache-clear-cache)
+    - [Lors de la recuperation d'un projet github](#lors-de-la-recuperation-dun-projet-github)
+    - [Demarrage de l'application](#demarrage-de-lapplication)
+    - [Arret de l'application](#arret-de-lapplication)
 - [Realisez votre premiere page](#realisez-votre-premiere-page)
-  - [HttpFoundation](#httpfoundation)
-    - [Exemple d'utilisation du component HttpFoundation avec ces classes Request et Response](#exemple-dutilisation-du-component-httpfoundation-avec-ces-classes-request-et-response)
-  - [Routing](#routing)
-    - [Exemple d'utilisation du component Routing](#exemple-dutilisation-du-component-routing)
-  - [Le controleur front symfony component HttpKernel](#le-controleur-front-symfony-component-httpkernel)
-    - [Exemple de http_kernel](#exemple-de-http_kernel)
-  - [Realisez une application configurable et extensible](#realisez-une-application-configurable-et-extensible)
-    - [Construction d'un objet recuperable a l'aide de service (Container service)](#construction-dun-objet-recuperable-a-laide-de-service-container-service)
+    - [HttpFoundation](#httpfoundation)
+        - [Exemple d'utilisation du component HttpFoundation avec ces classes Request et Response](#exemple-dutilisation-du-component-httpfoundation-avec-ces-classes-request-et-response)
+    - [Routing](#routing)
+        - [Exemple d'utilisation du component Routing](#exemple-dutilisation-du-component-routing)
+    - [Le controleur front symfony component HttpKernel](#le-controleur-front-symfony-component-httpkernel)
+        - [Exemple de http_kernel](#exemple-de-http_kernel)
+    - [Realisez une application configurable et extensible](#realisez-une-application-configurable-et-extensible)
+        - [Construction d'un objet recuperable a l'aide de service (Container service)](#construction-dun-objet-recuperable-a-laide-de-service-container-service)
 - [Bug fixe](#bug-fixe)
 
 <!-- /TOC -->
@@ -82,30 +84,11 @@ symfony new [projet]
 composer require symfony/apache-pack
 ```
 
-Puis suivre les instructions pour configurer le server apache (fichier.htaccess)
+Dans le cas d'une installation sur WAMPServer cliquer sur le bouton Wamp>Apache>httpd-vhosts.conf puis editer le fichier pour lui indiquer le dossier du site. Puis redemarrer les services Wampserver.
 
-## Demarrage de l'application
 
-Demarrage de l'application symfony
+Puis suivre les instructions pour configurer le server apache (fichier.htaccess) dans le cas d'une utilisation from scratch.
 
-```cmd
-cd  [projet]
-symfony server:start
-```
-
-![symfony_accueil](ressources/symfony_accueil.png)
-
-```cmd
-symfony.exe server:ca:install
-symfony serve -d
-[OK] Web server listening
-    The Web server is using PHP CGI 7.4.1
-    http://127.0.0.1:8000
-```
-
-## Arret de l'application
-
-Ctrl+C
 
 ## Installer Doctrine
 
@@ -122,6 +105,9 @@ Dans .env
 DATABASE_URL="mysql://root:root@localhost:3306/symfony?serverVersion=5.7.24"
 ```
 
+> En indiquant le nom 'symfony' sur la configuration de la connexion, alors Doctrine creera une base de donnees de ce nom dans le cas d'utilisation de la commande de creation de base de donnee doctrine: `php bin/console doctrine:database:create`
+
+
 Dans doctrine.yaml
 
 ```yaml
@@ -130,6 +116,9 @@ doctrine:
     url: "%env(resolve:DATABASE_URL)%"
     driver: pdo_mysql
 ```
+
+Cela Pointera sur la configuration du fichier .env
+
 
 ## Verifier votre environnement
 
@@ -169,6 +158,15 @@ C:\MAMP\bin\php\php7.4.1\php.ini
 .......................WWW........W
  [OK]
  Your system is ready to run Symfony projects
+```
+
+## Installation OpCache
+
+Dans php.ini
+
+```ini
+[opcache]
+zend_extension="C:\wamp64\bin\php\php7.4.9\ext\php_opcache.dll"
 ```
 
 ## Installation de package recommande exemple intl
@@ -221,8 +219,40 @@ APP_DEBUG=1
 ## Nettoyage du cache Clear Cache
 
 ```cmd
-bin/console c:c
+php bin/console c:c
 ```
+
+## Lors de la recuperation d'un projet github
+
+**Imperatif** executer la commande ci-dessous vous permettra de charger le fichier .env
+
+```cmd
+composer require symfony/dotenv
+```
+
+
+## Demarrage de l'application
+
+Demarrage de l'application symfony
+
+```cmd
+cd  [projet]
+symfony server:start
+```
+
+![symfony_accueil](ressources/symfony_accueil.png)
+
+```cmd
+symfony.exe server:ca:install
+symfony serve -d
+[OK] Web server listening
+    The Web server is using PHP CGI 7.4.1
+    http://127.0.0.1:8000
+```
+
+## Arret de l'application
+
+Ctrl+C
 
 # Realisez votre premiere page
 
